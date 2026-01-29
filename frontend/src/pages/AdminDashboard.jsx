@@ -65,7 +65,8 @@ export default function AdminDashboard() {
             setScheduleFormData({ fromDay: 'Monday', toDay: 'Friday', time: '', batch: '', notes: '', whatsapp: '' });
             fetchData();
         } catch (error) {
-            alert('Failed to add schedule');
+            console.error('Error adding schedule:', error.response?.data || error.message);
+            alert('Failed to add schedule: ' + (error.response?.data?.error || error.message));
         }
     };
 
