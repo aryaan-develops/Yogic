@@ -20,6 +20,15 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+// Root Route (Health Check)
+app.get('/', (req, res) => {
+  res.json({
+    message: "smriti.yoga API is running",
+    status: "healthy",
+    time: new Date().toISOString()
+  });
+});
+
 // Multer Configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
